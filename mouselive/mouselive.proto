@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package mouselive;
+package protobuf;
 
 // The greeting service definition.
 service GRPCApi {
