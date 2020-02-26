@@ -3,7 +3,7 @@ syntax = "proto3";
 package mouselive;
 
 // The greeting service definition.
-service Greeter {
+service GRPCApi {
     // Sends a greeting
     rpc SayHello (HelloRequest) returns (HelloReply) {
     }

@@ -137,10 +137,10 @@ var fileDescriptor_d2ba8147a9cd784f = []byte{
 	0xc5, 0x89, 0xe9, 0x30, 0x45, 0x30, 0xae, 0x90, 0x1c, 0x17, 0x57, 0x62, 0x4a, 0x4a, 0x66, 0x49,
 	0x66, 0x7e, 0x5e, 0x62, 0x8e, 0x04, 0x13, 0x58, 0x12, 0x49, 0x44, 0x48, 0x8c, 0x8b, 0x2d, 0xaf,
 	0x34, 0x37, 0x29, 0xb5, 0x48, 0x82, 0x59, 0x81, 0x51, 0x83, 0x39, 0x08, 0xca, 0x33, 0xea, 0x62,
-	0xe4, 0x62, 0x77, 0x2f, 0x4a, 0x4d, 0x2d, 0x49, 0x2d, 0x12, 0xb2, 0xe1, 0xe2, 0x08, 0x4e, 0xac,
+	0xe4, 0x62, 0x77, 0x0f, 0x0a, 0x70, 0x76, 0x2c, 0xc8, 0x14, 0xb2, 0xe1, 0xe2, 0x08, 0x4e, 0xac,
 	0x04, 0x5b, 0x27, 0x24, 0xae, 0x87, 0x70, 0x38, 0xb2, 0x23, 0xa5, 0x44, 0x31, 0x25, 0x0a, 0x72,
 	0x2a, 0x95, 0x18, 0x84, 0x1c, 0xb9, 0x78, 0x61, 0xba, 0x1d, 0xd3, 0x13, 0x33, 0xf3, 0x48, 0x37,
-	0x22, 0x89, 0x0d, 0x1c, 0x44, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x30, 0x3f, 0x1e, 0x69,
+	0x22, 0x89, 0x0d, 0x1c, 0x44, 0xc6, 0x80, 0x00, 0x00, 0x00, 0xff, 0xff, 0x9f, 0xd1, 0x37, 0x7a,
 	0x35, 0x01, 0x00, 0x00,
 }
 
@@ -152,110 +152,110 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// GreeterClient is the client API for Greeter service.
+// GRPCApiClient is the client API for GRPCApi service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type GreeterClient interface {
+type GRPCApiClient interface {
 	// Sends a greeting
 	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
 	SayHelloAgain(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
 }
 
-type greeterClient struct {
+type gRPCApiClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewGreeterClient(cc grpc.ClientConnInterface) GreeterClient {
-	return &greeterClient{cc}
+func NewGRPCApiClient(cc grpc.ClientConnInterface) GRPCApiClient {
+	return &gRPCApiClient{cc}
 }
 
-func (c *greeterClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
+func (c *gRPCApiClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
 	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, "/mouselive.Greeter/SayHello", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/mouselive.GRPCApi/SayHello", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *greeterClient) SayHelloAgain(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
+func (c *gRPCApiClient) SayHelloAgain(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
 	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, "/mouselive.Greeter/SayHelloAgain", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/mouselive.GRPCApi/SayHelloAgain", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// GreeterServer is the server API for Greeter service.
-type GreeterServer interface {
+// GRPCApiServer is the server API for GRPCApi service.
+type GRPCApiServer interface {
 	// Sends a greeting
 	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
 	SayHelloAgain(context.Context, *HelloRequest) (*HelloReply, error)
 }
 
-// UnimplementedGreeterServer can be embedded to have forward compatible implementations.
-type UnimplementedGreeterServer struct {
+// UnimplementedGRPCApiServer can be embedded to have forward compatible implementations.
+type UnimplementedGRPCApiServer struct {
 }
 
-func (*UnimplementedGreeterServer) SayHello(ctx context.Context, req *HelloRequest) (*HelloReply, error) {
+func (*UnimplementedGRPCApiServer) SayHello(ctx context.Context, req *HelloRequest) (*HelloReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
 }
-func (*UnimplementedGreeterServer) SayHelloAgain(ctx context.Context, req *HelloRequest) (*HelloReply, error) {
+func (*UnimplementedGRPCApiServer) SayHelloAgain(ctx context.Context, req *HelloRequest) (*HelloReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SayHelloAgain not implemented")
 }
 
-func RegisterGreeterServer(s *grpc.Server, srv GreeterServer) {
-	s.RegisterService(&_Greeter_serviceDesc, srv)
+func RegisterGRPCApiServer(s *grpc.Server, srv GRPCApiServer) {
+	s.RegisterService(&_GRPCApi_serviceDesc, srv)
 }
 
-func _Greeter_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _GRPCApi_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreeterServer).SayHello(ctx, in)
+		return srv.(GRPCApiServer).SayHello(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/mouselive.Greeter/SayHello",
+		FullMethod: "/mouselive.GRPCApi/SayHello",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).SayHello(ctx, req.(*HelloRequest))
+		return srv.(GRPCApiServer).SayHello(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Greeter_SayHelloAgain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _GRPCApi_SayHelloAgain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(HelloRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GreeterServer).SayHelloAgain(ctx, in)
+		return srv.(GRPCApiServer).SayHelloAgain(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/mouselive.Greeter/SayHelloAgain",
+		FullMethod: "/mouselive.GRPCApi/SayHelloAgain",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GreeterServer).SayHelloAgain(ctx, req.(*HelloRequest))
+		return srv.(GRPCApiServer).SayHelloAgain(ctx, req.(*HelloRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Greeter_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "mouselive.Greeter",
-	HandlerType: (*GreeterServer)(nil),
+var _GRPCApi_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "mouselive.GRPCApi",
+	HandlerType: (*GRPCApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "SayHello",
-			Handler:    _Greeter_SayHello_Handler,
+			Handler:    _GRPCApi_SayHello_Handler,
 		},
 		{
 			MethodName: "SayHelloAgain",
-			Handler:    _Greeter_SayHelloAgain_Handler,
+			Handler:    _GRPCApi_SayHelloAgain_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
