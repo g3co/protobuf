@@ -25,123 +25,164 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // The request message containing the user's name.
-type HelloRequest struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+type NewAccountsRequest struct {
+	Size                 int64    `protobuf:"varint,1,opt,name=size,proto3" json:"size,omitempty"`
+	Number               int64    `protobuf:"varint,2,opt,name=number,proto3" json:"number,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *HelloRequest) Reset()         { *m = HelloRequest{} }
-func (m *HelloRequest) String() string { return proto.CompactTextString(m) }
-func (*HelloRequest) ProtoMessage()    {}
-func (*HelloRequest) Descriptor() ([]byte, []int) {
+func (m *NewAccountsRequest) Reset()         { *m = NewAccountsRequest{} }
+func (m *NewAccountsRequest) String() string { return proto.CompactTextString(m) }
+func (*NewAccountsRequest) ProtoMessage()    {}
+func (*NewAccountsRequest) Descriptor() ([]byte, []int) {
 	return fileDescriptor_d2ba8147a9cd784f, []int{0}
 }
 
-func (m *HelloRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_HelloRequest.Unmarshal(m, b)
+func (m *NewAccountsRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_NewAccountsRequest.Unmarshal(m, b)
 }
-func (m *HelloRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_HelloRequest.Marshal(b, m, deterministic)
+func (m *NewAccountsRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_NewAccountsRequest.Marshal(b, m, deterministic)
 }
-func (m *HelloRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HelloRequest.Merge(m, src)
+func (m *NewAccountsRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_NewAccountsRequest.Merge(m, src)
 }
-func (m *HelloRequest) XXX_Size() int {
-	return xxx_messageInfo_HelloRequest.Size(m)
+func (m *NewAccountsRequest) XXX_Size() int {
+	return xxx_messageInfo_NewAccountsRequest.Size(m)
 }
-func (m *HelloRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_HelloRequest.DiscardUnknown(m)
+func (m *NewAccountsRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_NewAccountsRequest.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_HelloRequest proto.InternalMessageInfo
+var xxx_messageInfo_NewAccountsRequest proto.InternalMessageInfo
 
-func (m *HelloRequest) GetName() string {
+func (m *NewAccountsRequest) GetSize() int64 {
 	if m != nil {
-		return m.Name
+		return m.Size
 	}
-	return ""
+	return 0
 }
 
-// The response message containing the greetings
-type HelloReply struct {
-	Message              string   `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
-	Additional           string   `protobuf:"bytes,2,opt,name=additional,proto3" json:"additional,omitempty"`
-	Number               int64    `protobuf:"varint,3,opt,name=number,proto3" json:"number,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *HelloReply) Reset()         { *m = HelloReply{} }
-func (m *HelloReply) String() string { return proto.CompactTextString(m) }
-func (*HelloReply) ProtoMessage()    {}
-func (*HelloReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_d2ba8147a9cd784f, []int{1}
-}
-
-func (m *HelloReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_HelloReply.Unmarshal(m, b)
-}
-func (m *HelloReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_HelloReply.Marshal(b, m, deterministic)
-}
-func (m *HelloReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_HelloReply.Merge(m, src)
-}
-func (m *HelloReply) XXX_Size() int {
-	return xxx_messageInfo_HelloReply.Size(m)
-}
-func (m *HelloReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_HelloReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_HelloReply proto.InternalMessageInfo
-
-func (m *HelloReply) GetMessage() string {
-	if m != nil {
-		return m.Message
-	}
-	return ""
-}
-
-func (m *HelloReply) GetAdditional() string {
-	if m != nil {
-		return m.Additional
-	}
-	return ""
-}
-
-func (m *HelloReply) GetNumber() int64 {
+func (m *NewAccountsRequest) GetNumber() int64 {
 	if m != nil {
 		return m.Number
 	}
 	return 0
 }
 
+// The response message containing the greetings
+type AccountsResponse struct {
+	Account              []*AccountStruct `protobuf:"bytes,1,rep,name=account,proto3" json:"account,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
+}
+
+func (m *AccountsResponse) Reset()         { *m = AccountsResponse{} }
+func (m *AccountsResponse) String() string { return proto.CompactTextString(m) }
+func (*AccountsResponse) ProtoMessage()    {}
+func (*AccountsResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d2ba8147a9cd784f, []int{1}
+}
+
+func (m *AccountsResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AccountsResponse.Unmarshal(m, b)
+}
+func (m *AccountsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AccountsResponse.Marshal(b, m, deterministic)
+}
+func (m *AccountsResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AccountsResponse.Merge(m, src)
+}
+func (m *AccountsResponse) XXX_Size() int {
+	return xxx_messageInfo_AccountsResponse.Size(m)
+}
+func (m *AccountsResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AccountsResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AccountsResponse proto.InternalMessageInfo
+
+func (m *AccountsResponse) GetAccount() []*AccountStruct {
+	if m != nil {
+		return m.Account
+	}
+	return nil
+}
+
+type AccountStruct struct {
+	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	Status               string   `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *AccountStruct) Reset()         { *m = AccountStruct{} }
+func (m *AccountStruct) String() string { return proto.CompactTextString(m) }
+func (*AccountStruct) ProtoMessage()    {}
+func (*AccountStruct) Descriptor() ([]byte, []int) {
+	return fileDescriptor_d2ba8147a9cd784f, []int{2}
+}
+
+func (m *AccountStruct) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AccountStruct.Unmarshal(m, b)
+}
+func (m *AccountStruct) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AccountStruct.Marshal(b, m, deterministic)
+}
+func (m *AccountStruct) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AccountStruct.Merge(m, src)
+}
+func (m *AccountStruct) XXX_Size() int {
+	return xxx_messageInfo_AccountStruct.Size(m)
+}
+func (m *AccountStruct) XXX_DiscardUnknown() {
+	xxx_messageInfo_AccountStruct.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_AccountStruct proto.InternalMessageInfo
+
+func (m *AccountStruct) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *AccountStruct) GetStatus() string {
+	if m != nil {
+		return m.Status
+	}
+	return ""
+}
+
 func init() {
-	proto.RegisterType((*HelloRequest)(nil), "protobuf.HelloRequest")
-	proto.RegisterType((*HelloReply)(nil), "protobuf.HelloReply")
+	proto.RegisterType((*NewAccountsRequest)(nil), "protobuf.NewAccountsRequest")
+	proto.RegisterType((*AccountsResponse)(nil), "protobuf.AccountsResponse")
+	proto.RegisterType((*AccountStruct)(nil), "protobuf.AccountStruct")
 }
 
 func init() { proto.RegisterFile("mouselive.proto", fileDescriptor_d2ba8147a9cd784f) }
 
 var fileDescriptor_d2ba8147a9cd784f = []byte{
-	// 199 bytes of a gzipped FileDescriptorProto
+	// 216 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xcf, 0xcd, 0x2f, 0x2d,
 	0x4e, 0xcd, 0xc9, 0x2c, 0x4b, 0xd5, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x00, 0x53, 0x49,
-	0xa5, 0x69, 0x4a, 0x4a, 0x5c, 0x3c, 0x1e, 0xa9, 0x39, 0x39, 0xf9, 0x41, 0xa9, 0x85, 0xa5, 0xa9,
-	0xc5, 0x25, 0x42, 0x42, 0x5c, 0x2c, 0x79, 0x89, 0xb9, 0xa9, 0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0x9c,
-	0x41, 0x60, 0xb6, 0x52, 0x1c, 0x17, 0x17, 0x54, 0x4d, 0x41, 0x4e, 0xa5, 0x90, 0x04, 0x17, 0x7b,
-	0x6e, 0x6a, 0x71, 0x71, 0x62, 0x3a, 0x4c, 0x11, 0x8c, 0x2b, 0x24, 0xc7, 0xc5, 0x95, 0x98, 0x92,
-	0x92, 0x59, 0x92, 0x99, 0x9f, 0x97, 0x98, 0x23, 0xc1, 0x04, 0x96, 0x44, 0x12, 0x11, 0x12, 0xe3,
-	0x62, 0xcb, 0x2b, 0xcd, 0x4d, 0x4a, 0x2d, 0x92, 0x60, 0x56, 0x60, 0xd4, 0x60, 0x0e, 0x82, 0xf2,
-	0x8c, 0xda, 0x18, 0xb9, 0xd8, 0xdd, 0x83, 0x02, 0x9c, 0x1d, 0x0b, 0x32, 0x85, 0xac, 0xb8, 0x38,
-	0x82, 0x13, 0x2b, 0xc1, 0xd6, 0x09, 0x89, 0xe9, 0xc1, 0x9c, 0xa9, 0x87, 0xec, 0x46, 0x29, 0x11,
-	0x0c, 0xf1, 0x82, 0x9c, 0x4a, 0x25, 0x06, 0x21, 0x7b, 0x2e, 0x5e, 0x98, 0x5e, 0xc7, 0xf4, 0xc4,
-	0xcc, 0x3c, 0x52, 0x0d, 0x48, 0x62, 0x03, 0x0b, 0x1b, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff, 0xc1,
-	0x0d, 0x12, 0xa9, 0x30, 0x01, 0x00, 0x00,
+	0xa5, 0x69, 0x4a, 0x0e, 0x5c, 0x42, 0x7e, 0xa9, 0xe5, 0x8e, 0xc9, 0xc9, 0xf9, 0xa5, 0x79, 0x25,
+	0xc5, 0x41, 0xa9, 0x85, 0xa5, 0xa9, 0xc5, 0x25, 0x42, 0x42, 0x5c, 0x2c, 0xc5, 0x99, 0x55, 0xa9,
+	0x12, 0x8c, 0x0a, 0x8c, 0x1a, 0xcc, 0x41, 0x60, 0xb6, 0x90, 0x18, 0x17, 0x5b, 0x5e, 0x69, 0x6e,
+	0x52, 0x6a, 0x91, 0x04, 0x13, 0x58, 0x14, 0xca, 0x53, 0x72, 0xe5, 0x12, 0x40, 0x68, 0x2f, 0x2e,
+	0xc8, 0xcf, 0x2b, 0x4e, 0x15, 0x32, 0xe4, 0x62, 0x4f, 0x84, 0x88, 0x49, 0x30, 0x2a, 0x30, 0x6b,
+	0x70, 0x1b, 0x89, 0xeb, 0xc1, 0x6c, 0xd4, 0x83, 0x2a, 0x0e, 0x2e, 0x29, 0x2a, 0x4d, 0x2e, 0x09,
+	0x82, 0xa9, 0x53, 0xb2, 0xe6, 0xe2, 0x45, 0x91, 0x01, 0xb9, 0x21, 0x2f, 0x31, 0x17, 0xe2, 0x06,
+	0xce, 0x20, 0x30, 0x1b, 0xe4, 0x86, 0xe2, 0x92, 0xc4, 0x92, 0xd2, 0x62, 0xb0, 0x1b, 0x38, 0x83,
+	0xa0, 0x3c, 0xa3, 0x70, 0x2e, 0x76, 0xf7, 0xa0, 0x00, 0x67, 0xc7, 0x82, 0x4c, 0x21, 0x1f, 0x2e,
+	0x3e, 0xf7, 0xd4, 0x12, 0x24, 0x3f, 0x09, 0xc9, 0x20, 0xec, 0xc6, 0xf4, 0xaa, 0x94, 0x14, 0x86,
+	0xcb, 0xe0, 0xde, 0x50, 0x62, 0x48, 0x62, 0x03, 0x4b, 0x1a, 0x03, 0x02, 0x00, 0x00, 0xff, 0xff,
+	0xb7, 0x5e, 0x44, 0xa1, 0x42, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -156,9 +197,8 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type GRPCApiClient interface {
-	// Sends a greeting
-	SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
-	SayHelloAgain(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error)
+	// Getting all new accounts
+	GetNewAccounts(ctx context.Context, in *NewAccountsRequest, opts ...grpc.CallOption) (*AccountsResponse, error)
 }
 
 type gRPCApiClient struct {
@@ -169,18 +209,9 @@ func NewGRPCApiClient(cc grpc.ClientConnInterface) GRPCApiClient {
 	return &gRPCApiClient{cc}
 }
 
-func (c *gRPCApiClient) SayHello(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
-	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, "/protobuf.GRPCApi/SayHello", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *gRPCApiClient) SayHelloAgain(ctx context.Context, in *HelloRequest, opts ...grpc.CallOption) (*HelloReply, error) {
-	out := new(HelloReply)
-	err := c.cc.Invoke(ctx, "/protobuf.GRPCApi/SayHelloAgain", in, out, opts...)
+func (c *gRPCApiClient) GetNewAccounts(ctx context.Context, in *NewAccountsRequest, opts ...grpc.CallOption) (*AccountsResponse, error) {
+	out := new(AccountsResponse)
+	err := c.cc.Invoke(ctx, "/protobuf.GRPCApi/GetNewAccounts", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -189,58 +220,36 @@ func (c *gRPCApiClient) SayHelloAgain(ctx context.Context, in *HelloRequest, opt
 
 // GRPCApiServer is the server API for GRPCApi service.
 type GRPCApiServer interface {
-	// Sends a greeting
-	SayHello(context.Context, *HelloRequest) (*HelloReply, error)
-	SayHelloAgain(context.Context, *HelloRequest) (*HelloReply, error)
+	// Getting all new accounts
+	GetNewAccounts(context.Context, *NewAccountsRequest) (*AccountsResponse, error)
 }
 
 // UnimplementedGRPCApiServer can be embedded to have forward compatible implementations.
 type UnimplementedGRPCApiServer struct {
 }
 
-func (*UnimplementedGRPCApiServer) SayHello(ctx context.Context, req *HelloRequest) (*HelloReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SayHello not implemented")
-}
-func (*UnimplementedGRPCApiServer) SayHelloAgain(ctx context.Context, req *HelloRequest) (*HelloReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method SayHelloAgain not implemented")
+func (*UnimplementedGRPCApiServer) GetNewAccounts(ctx context.Context, req *NewAccountsRequest) (*AccountsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetNewAccounts not implemented")
 }
 
 func RegisterGRPCApiServer(s *grpc.Server, srv GRPCApiServer) {
 	s.RegisterService(&_GRPCApi_serviceDesc, srv)
 }
 
-func _GRPCApi_SayHello_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HelloRequest)
+func _GRPCApi_GetNewAccounts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NewAccountsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(GRPCApiServer).SayHello(ctx, in)
+		return srv.(GRPCApiServer).GetNewAccounts(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/protobuf.GRPCApi/SayHello",
+		FullMethod: "/protobuf.GRPCApi/GetNewAccounts",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GRPCApiServer).SayHello(ctx, req.(*HelloRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _GRPCApi_SayHelloAgain_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(HelloRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(GRPCApiServer).SayHelloAgain(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/protobuf.GRPCApi/SayHelloAgain",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(GRPCApiServer).SayHelloAgain(ctx, req.(*HelloRequest))
+		return srv.(GRPCApiServer).GetNewAccounts(ctx, req.(*NewAccountsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -250,12 +259,8 @@ var _GRPCApi_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*GRPCApiServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "SayHello",
-			Handler:    _GRPCApi_SayHello_Handler,
-		},
-		{
-			MethodName: "SayHelloAgain",
-			Handler:    _GRPCApi_SayHelloAgain_Handler,
+			MethodName: "GetNewAccounts",
+			Handler:    _GRPCApi_GetNewAccounts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

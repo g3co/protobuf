@@ -4,21 +4,23 @@ package protobuf;
 
 // The greeting service definition.
 service GRPCApi {
-    // Sends a greeting
-    rpc SayHello (HelloRequest) returns (HelloReply) {
-    }
-    rpc SayHelloAgain (HelloRequest) returns (HelloReply) {
+    // Getting all new accounts
+    rpc GetNewAccounts (NewAccountsRequest) returns (AccountsResponse) {
     }
 }
 
 // The request message containing the user's name.
-message HelloRequest {
-    string name = 1;
+message NewAccountsRequest {
+    int64 size = 1;
+    int64 number = 2;
 }
 
 // The response message containing the greetings
-message HelloReply {
-    string message = 1;
-    string additional = 2;
-    int64 number = 3;
+message AccountsResponse {
+    repeated AccountStruct account = 1;
+}
+
+message AccountStruct {
+    string name = 1;
+    string status = 2;
 }
