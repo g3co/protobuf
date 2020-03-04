@@ -9,19 +9,19 @@ service GRPCApi {
     }
 }
 
-// The request message containing the user's name.
-message NewAccountsRequest {
-    int64 size = 1;
-    int64 number = 2;
-    account_type type = 3;
-}
-
-enum account_type {
+enum AccountType {
     all = 0;
     venue = 1;
     fan = 2;
     artist = 3;
     organizer = 4;
+}
+
+// The request message containing the user's name.
+message NewAccountsRequest {
+    int64 size = 1;
+    int64 number = 2;
+    AccountType type = 3;
 }
 
 // The response message containing the greetings
@@ -33,7 +33,7 @@ message AccountStruct {
     string name = 1;
     int64 createdAt = 2;
     string address = 3;
-    string accountType = 4;
+    AccountType accountType = 4;
     string status = 5;
     string imageLink = 6;
 }
