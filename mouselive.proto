@@ -21,7 +21,8 @@ enum AccountType {
 message NewAccountsRequest {
     int64 size = 1;
     int64 number = 2;
-    AccountType type = 3;
+    int64 period = 3;
+    AccountType type = 4;
 }
 
 // The response message containing the greetings
